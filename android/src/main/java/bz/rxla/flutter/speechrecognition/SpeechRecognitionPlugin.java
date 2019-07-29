@@ -50,8 +50,6 @@ public class SpeechRecognitionPlugin implements MethodCallHandler, RecognitionLi
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-US");
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_PREFERENCE, "en-US");
     }
 
     @Override
@@ -66,7 +64,7 @@ public class SpeechRecognitionPlugin implements MethodCallHandler, RecognitionLi
                 result.success(true);
                 break;
             case "speech.listen":
-                recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, getLocale(call.arguments.toString()));
+                recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
                 speech.startListening(recognizerIntent);
                 result.success(true);
                 break;
